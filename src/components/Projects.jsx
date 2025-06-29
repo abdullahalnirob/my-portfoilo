@@ -22,7 +22,7 @@ const Projects = () => {
       img: "https://i.ibb.co/jvDNgy4d/Screenshot-2025-06-25-105913.png",
       title: "Phudu",
       decription:
-        "A social media platform where people can share their hobbies and interests. Users can create profiles, share updates, and interact through comments and likes. They can also create groups, join existing ones, and engage with hobby-based communities.",
+        "Phudu is a modern, responsive doctor appointment booking web application that allows patients to browse doctors by specialty, view details, and book appointments online all in a few clicks. It’s designed to simplify the healthcare experience by connecting patients with trusted medical professi...",
       tech: ["React", "Tailwindcss", "Recharts", "LocalStorage"],
       link: "https://phudu.vercel.app/",
     },
