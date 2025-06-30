@@ -14,7 +14,7 @@ const Skill = () => {
                     My Skills<span className="text-blue-400">.</span>
                 </h1>
             </div>
-            <div className="flex items-center flex-wrap gap-5 md:gap-10 py-10">
+            <div className="flex items-center flex-wrap gap-4 md:gap-10 py-10">
                 <div className="flex flex-col items-center space-y-2">
                     <span className="text-white text-sm font-medium">HTML</span>
                     <div className="w-px h-8 bg-gray-400"></div>
