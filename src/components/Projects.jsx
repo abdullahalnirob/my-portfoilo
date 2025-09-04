@@ -31,9 +31,10 @@ const Projects = () => {
   return (
     <div className="py-16">
       <div className="">
-        <h1 className="text-4xl font-bold text-white mb-12">
+        <h1 className="text-4xl font-bold text-white mb-2">
           Projects<span className="text-blue-400">.</span>
         </h1>
+        <p className="mb-8 text-gray-400">Highlights of My Development Work.</p>
 
         <div className="grid gap-12">
           {projects.map((project, index) => (

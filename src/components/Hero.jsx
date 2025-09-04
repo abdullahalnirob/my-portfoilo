@@ -35,7 +35,7 @@ const Hero = () => {
             exceptional user experiences.
           </p>
           <div className="flex flex-wrap justify-start items-center gap-4 mb-12">
-            <button className="flex items-center gap-2 bg-blue-500 text-white px-4 py-2 cursor-pointer rounded-lg font-medium hover:bg-blue-600 transition-colors">
+            <button className="flex items-center gap-2 bg-blue-500 text-white px-4 py-2 cursor-pointer rounded-md font-medium hover:bg-blue-600 transition-colors">
               <Download className="w-4 h-4" />
               Resume
             </button>

@@ -43,7 +43,7 @@ const Navbar = () => {
           </Link>
         </ul>
         <div className="hidden md:block">
-          <button className="flex items-center gap-2 bg-blue-400 text-white px-4 py-2 cursor-pointer rounded-lg font-medium hover:bg-blue-500 transition-colors">
+          <button className="flex items-center gap-2 bg-blue-400 text-white px-4 py-2 cursor-pointer rounded-md font-medium hover:bg-blue-500 transition-colors">
             <Download className="w-4 h-4" />
             Resume
           </button>
