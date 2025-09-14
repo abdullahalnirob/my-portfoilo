@@ -76,7 +76,9 @@ const Review = () => {
       <h1 className="text-4xl font-bold text-white">
         FeedBack<span className="text-blue-400">.</span>
       </h1>
-      <p className='mb-6 mt-2 text-gray-400'>Building Trust Through Quality Work.</p>
+      <p className="mb-6 mt-2 text-gray-400">
+        Building Trust Through Quality Work.
+      </p>
       <Carousel
         plugins={[autoplay.current]}
         opts={{
@@ -100,7 +102,7 @@ const Review = () => {
                 className="basis-full md:basis-1/2 lg:basis-1/3"
               >
                 <div className="p-4">
-                  <Card>
+                  <Card className={''}>
                     <CardContent className="flex flex-col space-y-2 px-6 h-auto">
                       <div className="flex items-center">
                         {[...Array(5)].map((_, i) => (

@@ -17,13 +17,13 @@ const Hero = () => {
           <h1 className="text-3xl sm:text-4xl font-bold">
             Abdullah Al Nirob<span className="text-blue-400">.</span>
           </h1>
-          <p className="text-md text-gray-400 mt-2">MERN Stack Developer</p>
+          <p className="text-md text-gray-400 mt-2">Full Stack Developer</p>
           <div className="my-5 flex flex-col sm:flex-row items-start sm:space-x-6 space-y-3 sm:space-y-0">
             <div className="flex items-center gap-2">
               <Mail className="text-blue-400 w-5 h-5" />
               <span className="text-gray-400 text-sm">abdullahalnirob12@gmail.com</span>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1">
               <MapPin className="text-blue-400 w-5 h-5" />
               <span className="text-gray-400 text-sm">Bangladesh</span>
             </div>
