@@ -21,7 +21,9 @@ const Hero = () => {
           <div className="my-5 flex flex-col sm:flex-row items-start sm:space-x-6 space-y-3 sm:space-y-0">
             <div className="flex items-center gap-2">
               <Mail className="text-blue-400 w-5 h-5" />
-              <span className="text-gray-400 text-sm">abdullahalnirob12@gmail.com</span>
+              <span className="text-gray-400 text-sm">
+                abdullahalnirob12@gmail.com
+              </span>
             </div>
             <div className="flex items-center gap-1">
               <MapPin className="text-blue-400 w-5 h-5" />
@@ -59,11 +61,11 @@ const Hero = () => {
 
         {/* Right Section (Image & Link) */}
         <div className="flex-1 flex justify-center">
-          <div className="w-full  max-w-xs text-center">
+          <div className="w-full max-w-xs text-center">
             <img
-              src="me.jpg"
+              src="https://i.ibb.co.com/Dgm4qsh4/me-profile.png"
               alt="Profile"
-              className="w-48 h-48 sm:w-52 sm:h-52 rounded-full mb-4 mx-auto"
+              className="w-48 h-48 sm:w-52 sm:h-52 rounded-full mb-4 mx-auto ring-1 ring-gray-300/10 shadow-lg"
             />
             <p className="text-gray-400">Follow me on GitHub</p>
             <a
