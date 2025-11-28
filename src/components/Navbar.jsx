@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { Download, Menu, X } from "lucide-react";
-import { Link } from "react-scroll";
+import React, { useState } from 'react';
+import { Download, Menu, X } from 'lucide-react';
+import { Link } from 'react-scroll';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,13 +32,19 @@ const Navbar = () => {
           >
             Skills
           </Link>
-          <Link to="projects" className="text-white cursor-pointer hover:text-blue-400">
+          <Link
+            to="projects"
+            className="text-white cursor-pointer hover:text-blue-400"
+          >
             Projects
           </Link>
           {/* <Link to="education" className="text-white cursor-pointer hover:text-blue-400">
             Education
           </Link> */}
-          <Link to="contact" className="text-white cursor-pointer hover:text-blue-400">
+          <Link
+            to="contact"
+            className="text-white cursor-pointer hover:text-blue-400"
+          >
             Contact
           </Link>
         </ul>

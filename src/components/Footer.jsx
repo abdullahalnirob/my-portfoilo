@@ -1,5 +1,5 @@
-import { Facebook, Github, Instagram } from "lucide-react";
-import { Link } from "react-scroll";
+import { Facebook, Github, Instagram } from 'lucide-react';
+import { Link } from 'react-scroll';
 
 const Footer = () => {
   return (

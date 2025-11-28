@@ -6,7 +6,8 @@ import {
   Twitter,
   Linkedin,
   Facebook,
-} from "lucide-react";
+} from 'lucide-react';
+
 
 const Hero = () => {
   return (

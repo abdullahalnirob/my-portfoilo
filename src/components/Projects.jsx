@@ -1,15 +1,42 @@
 import React from 'react';
 import { Card } from './ui/card';
 import { MdOutlineArrowOutward } from 'react-icons/md';
+import { Tooltip, TooltipContent, TooltipTrigger } from './ui/tooltip';
 
 const Projects = () => {
   const projects = [
     {
+      img: 'https://i.ibb.co.com/knd46mf/scrnli-q-A8-D7-Y7y15k-N4g.png',
+      title: 'Gimox Gym Management',
+      decription:
+        'This modern and responsive blog platform is designed to deliver a smooth reading and publishing experience. Built using React, Firebase, and Tailwind CSS, it showcases clean design, fast performance, and dynamic feature.',
+      tech: [
+        'React',
+        'Tailwindcss',
+        'MUI',
+        'Framer-motion',
+        'Firbase',
+        'Express',
+        'MongoDB',
+        'JWT',
+        'Stripe',
+      ],
+      link: 'https://gimox.surge.sh/',
+    },
+    {
       img: 'https://i.ibb.co/RJrqWty/Screenshot-2025-06-29-110534.png',
       title: 'Samusa Blog',
       decription:
-        'This modern and responsive blog platform is designed to deliver a smooth reading and publishing experience. Built using React, Firebase, and Tailwind CSS, it showcases clean design, fast performance, and dynamic feature',
-      tech: ['React', 'Tailwindcss', 'Firbase', 'Express', 'MongoDB', 'JWT'],
+        'Gimox Gym Management is a modern and responsive platform built to simplify gym operations. It offers tools for managing members, payments, trainers, and schedules with a smooth and intuitive interface. Powered by React, Firebase, Express, and MongoDB, it delivers fast performance, secure access, and seamless Stripe payment integration.',
+      tech: [
+        'React',
+        'Tailwindcss',
+        'Framer-motion',
+        'Firbase',
+        'Express',
+        'MongoDB',
+        'JWT',
+      ],
       link: 'https://samusa-blog.web.app/',
     },
     {
@@ -24,7 +51,7 @@ const Projects = () => {
       img: 'https://i.ibb.co/jvDNgy4d/Screenshot-2025-06-25-105913.png',
       title: 'Phudu',
       decription:
-        'Phudu is a modern, responsive doctor appointment booking web application that allows patients to browse doctors by specialty, view details, and book appointments online all in a few clicks. It’s designed to simplify the healthcare experience by connecting patients with trusted medical professi...',
+        'Phudu is a modern, responsive doctor appointment booking web application that allows patients to browse doctors by specialty, view details, and book appointments online all in a few clicks. It’s designed to simplify the healthcare experience by connecting patients with trusted medical professionals.',
       tech: ['React', 'Tailwindcss', 'Recharts', 'LocalStorage'],
       link: 'https://phudu.vercel.app/',
     },
@@ -63,9 +90,20 @@ const Projects = () => {
                   {project.title}
                 </h2>
 
-                <p className="text-gray-300 text-sm mb-2 leading-relaxed line-clamp-3 flex-1">
-                  {project.decription}
-                </p>
+                {/*  */}
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <p className="text-gray-300 text-sm mb-2 leading-relaxed line-clamp-3 flex-1">
+                      {project.decription.slice(0, 150)}...
+                    </p>
+                  </TooltipTrigger>
+
+                  <TooltipContent className="text-sm max-w-md w-[300px]">
+                    <p>{project.decription}</p>
+                  </TooltipContent>
+                </Tooltip>
+
+                {/*  */}
 
                 <div className="flex flex-wrap gap-2 mb-6">
                   {project.tech.map((tech, i) => (
