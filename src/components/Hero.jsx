@@ -8,7 +8,6 @@ import {
   Facebook,
 } from 'lucide-react';
 
-
 const Hero = () => {
   return (
     <div className="text-white py-20" id="hero">
@@ -38,10 +37,15 @@ const Hero = () => {
             exceptional user experiences.
           </p>
           <div className="flex flex-wrap justify-start items-center gap-4 mb-12">
-            <button className="flex items-center gap-2 bg-blue-500 text-white px-4 py-2 cursor-pointer rounded-md font-medium hover:bg-blue-600 transition-colors">
-              <Download className="w-4 h-4" />
-              Resume
-            </button>
+            <a
+              target="_blank"
+              href="https://drive.google.com/file/d/1KvL64X0grKsldKvuMMwWZBXzbE5WIehI/view?usp=sharing"
+            >
+              <button className="flex items-center gap-2 bg-blue-400 text-white px-4 py-2 cursor-pointer rounded-md font-medium hover:bg-blue-500 transition-colors">
+                <Download className="w-4 h-4" />
+                Resume
+              </button>
+            </a>
             <a target="_blank" href="https://github.com/abdullahalnirob">
               <button className="cursor-pointer px-3 py-2 border border-gray-600 rounded-lg hover:bg-gray-800 transition-colors">
                 <Github className="w-5 h-5" />

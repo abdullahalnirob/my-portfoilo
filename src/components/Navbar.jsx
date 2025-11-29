@@ -49,10 +49,15 @@ const Navbar = () => {
           </Link>
         </ul>
         <div className="hidden md:block">
-          <button className="flex items-center gap-2 bg-blue-400 text-white px-4 py-2 cursor-pointer rounded-md font-medium hover:bg-blue-500 transition-colors">
-            <Download className="w-4 h-4" />
-            Resume
-          </button>
+          <a
+            target="_blank"
+            href="https://drive.google.com/file/d/1KvL64X0grKsldKvuMMwWZBXzbE5WIehI/view?usp=sharing"
+          >
+            <button className="flex items-center gap-2 bg-blue-400 text-white px-4 py-2 cursor-pointer rounded-md font-medium hover:bg-blue-500 transition-colors">
+              <Download className="w-4 h-4" />
+              Resume
+            </button>
+          </a>
         </div>
         <div className="md:hidden">
           <button onClick={toggleMenu}>
@@ -90,9 +95,14 @@ const Navbar = () => {
           <Link className="text-white cursor-pointer hover:text-blue-400">
             Contact
           </Link>
-          <button className="mt-2 bg-blue-500 hover:bg-blue-600 transition-colors text-white px-4 py-2 rounded-full">
-            Resume
-          </button>
+          <a
+            target="_blank"
+            href="https://drive.google.com/file/d/1KvL64X0grKsldKvuMMwWZBXzbE5WIehI/view?usp=sharing"
+          >
+            <button className="mt-2 bg-blue-500 hover:bg-blue-600 transition-colors text-white px-4 py-2 rounded-full">
+              Resume
+            </button>
+          </a>
         </div>
       )}
     </header>

@@ -31,9 +31,8 @@ const Contact = () => {
         Contact<span className="text-blue-400">.</span>
       </h1>
       <div className="flex flex-col lg:flex-row gap-6">
-
         <div className="bg-[#111111] p-6 rounded-lg shadow-md text-white flex-1 space-y-4">
-        <h2 className="text-lg font-semibold">Contact Information</h2>
+          <h2 className="text-lg font-semibold">Contact Information</h2>
           <div className="flex items-center gap-3">
             <User className="text-blue-400 w-5 h-5" />
             <span className="text-gray-400 text-sm">Abdullah Al Nirob</span>
@@ -48,7 +47,7 @@ const Contact = () => {
 
           <div className="flex items-center gap-3">
             <Phone className="text-blue-400 w-5 h-5" />
-            <span className="text-gray-400 text-sm">+880 1889396315</span>
+            <span className="text-gray-400 text-sm">+88 01305719889</span>
           </div>
 
           <div className="flex items-center gap-3">
