@@ -43,7 +43,7 @@ const reviews = [
   },
   {
     id: 5,
-    img: 'https://codecraftor.dev/assets/Hojrat-CpefUUDA.jpg',
+    img: 'https://i.ibb.co.com/FLjJxwwy/Hazrat.jpg',
     name: 'Md Hazrat Ali ',
     content:
       'আমি নিরব কে ডেভেলপার হিসেবে বড় হতে দেখেছি, এবং বলতে পারি সে সত্যিই একজন প্রতিভাবান ও পরিশ্রমী ডেভেলপার। নতুন প্রযুক্তি শেখার প্রতি তার আগ্রহ, সমস্যা সমাধানের দক্ষতা, এবং পরিষ্কার ও কার্যকর কোড লেখার অভ্যাস তাকে সবার থেকে আলাদা করে তোলে। সবসময় ইতিবাচক মনোভাব নিয়ে কাজ করে এবং নতুন চ্যালেঞ্জ নিতে কখনো পিছপা হয় না। আমি নিশ্চিত, ভবিষ্যতে সে একজন দক্ষ ও সফল সফটওয়্যার ডেভেলপার হিসেবে প্রতিষ্ঠিত হবে।',
@@ -118,7 +118,7 @@ const Review = () => {
                       </p>
                       <div className="flex mt-2 gap-2 items-center">
                         <img
-                          src={review.img}
+                          src={review.img || '/placeholder.svg'}
                           alt={review.name}
                           className="object-cover w-8 h-8 ring-2 ring-blue-400 rounded-full"
                         />

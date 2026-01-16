@@ -24,7 +24,7 @@ const Projects = () => {
       link: 'https://gimox.surge.sh/',
     },
     {
-      img: 'https://i.ibb.co/RJrqWty/Screenshot-2025-06-29-110534.png',
+      img: 'https://i.ibb.co.com/RJrqWty/Screenshot-2025-06-29-110534.png',
       title: 'Samusa Blog',
       decription:
         'Gimox Gym Management is a modern and responsive platform built to simplify gym operations. It offers tools for managing members, payments, trainers, and schedules with a smooth and intuitive interface. Powered by React, Firebase, Express, and MongoDB, it delivers fast performance, secure access, and seamless Stripe payment integration.',
@@ -40,20 +40,12 @@ const Projects = () => {
       link: 'https://samusa-blog.web.app/',
     },
     {
-      img: 'https://i.ibb.co/hxBW5qxy/Screenshot-2025-05-22-203943.png',
+      img: 'https://i.ibb.co.com/hxBW5qxy/Screenshot-2025-05-22-203943.png',
       title: 'HobbyHub',
       decription:
         'A social media platform where people can share their hobbies and interests. Users can create profiles. They can also create groups, join existing ones, and engage with hobby-based communities.',
       tech: ['React', 'Tailwindcss', 'Firbase', 'Express', 'MongoDB'],
       link: 'https://test-new-a8773.web.app/',
-    },
-    {
-      img: 'https://i.ibb.co/jvDNgy4d/Screenshot-2025-06-25-105913.png',
-      title: 'Phudu',
-      decription:
-        'Phudu is a modern, responsive doctor appointment booking web application that allows patients to browse doctors by specialty, view details, and book appointments online all in a few clicks. It’s designed to simplify the healthcare experience by connecting patients with trusted medical professionals.',
-      tech: ['React', 'Tailwindcss', 'Recharts', 'LocalStorage'],
-      link: 'https://phudu.vercel.app/',
     },
   ];
 
