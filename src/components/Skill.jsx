@@ -30,7 +30,7 @@ export const skills = [
     items: [
       { name: 'MongoDB', icon: <DiMongodb /> },
       { name: 'Firebase', icon: <FaNode /> },
-      { name: 'PostgreSQL', icon: <BiLogoPostgresql /> },
+     // { name: 'PostgreSQL', icon: <BiLogoPostgresql /> },
     ],
   },
   {
@@ -38,7 +38,7 @@ export const skills = [
     items: [
       { name: 'Git', icon: <FaNode /> },
       { name: 'GitHub', icon: <FaNode /> },
-      { name: 'Docker', icon: <FaNode /> },
+      //{ name: 'Docker', icon: <FaNode /> },
     ],
   }
 ];
