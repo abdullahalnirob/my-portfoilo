@@ -1,4 +1,6 @@
 import { Facebook, Github, Instagram } from 'lucide-react';
+import { FaLinkedin } from 'react-icons/fa';
+import { FaSquareXTwitter } from 'react-icons/fa6';
 import { Link } from 'react-scroll';
 
 const Footer = () => {
@@ -76,6 +78,20 @@ const Footer = () => {
             rel="noreferrer"
           >
             <Facebook className="w-5 h-5 text-gray-400 hover:text-blue-400 transition" />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/abdullah-al-nirob-io/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <FaLinkedin className="w-5 h-5 text-gray-400 hover:text-blue-400 transition" />
+          </a>
+          <a
+            href="https://x.com/AbdullahN66467"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <FaSquareXTwitter className="w-5 h-5 text-gray-400 hover:text-blue-400 transition" />
           </a>
         </div>
       </div>

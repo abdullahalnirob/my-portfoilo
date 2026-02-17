@@ -7,6 +7,7 @@ import {
   Linkedin,
   Facebook,
 } from 'lucide-react';
+import { FaLinkedin } from 'react-icons/fa';
 
 const Hero = () => {
   return (
@@ -51,14 +52,14 @@ const Hero = () => {
                 <Github className="w-5 h-5" />
               </button>
             </a>
-            <a target="_blank" href="https://x.com/AbdullahN66467">
-              <button className="cursor-pointer px-3 py-2 border border-gray-600 rounded-lg hover:bg-gray-800 transition-colors">
-                <Twitter className="w-5 h-5" />
-              </button>
-            </a>
             <a target="_blank" href="https://facebook.com/dev.abdullahalnirob/">
               <button className="cursor-pointer px-3 py-2 border border-gray-600 rounded-lg hover:bg-gray-800 transition-colors">
                 <Facebook className="w-5 h-5" />
+              </button>
+            </a>
+            <a target="_blank" href="https://www.linkedin.com/in/abdullah-al-nirob-io/">
+              <button className="cursor-pointer px-3 py-2 border border-gray-600 rounded-lg hover:bg-gray-800 transition-colors">
+                <FaLinkedin className="w-5 h-5" />
               </button>
             </a>
           </div>
