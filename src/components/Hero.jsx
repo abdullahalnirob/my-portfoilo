@@ -57,7 +57,10 @@ const Hero = () => {
                 <Facebook className="w-5 h-5" />
               </button>
             </a>
-            <a target="_blank" href="https://www.linkedin.com/in/abdullah-al-nirob-io/">
+            <a
+              target="_blank"
+              href="https://www.linkedin.com/in/abdullah-al-nirob-io/"
+            >
               <button className="cursor-pointer px-3 py-2 border border-gray-600 rounded-lg hover:bg-gray-800 transition-colors">
                 <FaLinkedin className="w-5 h-5" />
               </button>
@@ -69,9 +72,10 @@ const Hero = () => {
         <div className="flex-1 flex justify-center">
           <div className="w-full max-w-xs text-center">
             <img
-              src="https://i.ibb.co.com/Dgm4qsh4/me-profile.png"
+              src="profile.webp"
+              // src="https://i.ibb.co.com/Dgm4qsh4/me-profile.png"
               alt="Profile"
-              className="w-48 h-48 sm:w-52 sm:h-52 rounded-full mb-4 mx-auto ring-1 ring-gray-300/10 shadow-lg"
+              className="object-cover w-48 h-48 sm:w-52 sm:h-52 rounded-full mb-4 mx-auto ring-1 ring-gray-300/10 shadow-lg"
             />
             <p className="text-gray-400">Follow me on GitHub</p>
             <a
