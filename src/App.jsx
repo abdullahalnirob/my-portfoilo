@@ -24,7 +24,7 @@ const App = () => {
 
       {/* Main content with relative z-index */}
       <main className="relative z-10">
-        <div className="max-w-4xl px-6 md:px-0 mx-auto">
+        <div className="px-6 md:px-0 mx-auto">
           <Navbar />
           <div className="pt-16">
             <Hero />

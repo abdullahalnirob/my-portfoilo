@@ -65,130 +65,70 @@ const SkillCard = ({ group }) => {
 
   return (
     <div
+      className="group relative overflow-hidden rounded-2xl p-6 md:p-8 border border-gray-700 hover:border-blue-400/50 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10 hover:-translate-y-1 bg-gradient-to-br from-gray-800/50 to-gray-900/50"
       style={{
-        background: 'rgba(255,255,255,0.03)',
-        border: '1px solid rgba(255,255,255,0.07)',
-        borderRadius: '16px',
-        padding: '24px',
-        position: 'relative',
-        overflow: 'hidden',
-        transition: 'border-color 0.3s ease, transform 0.3s ease',
-        cursor: 'default',
+        borderColor: group.accent + '33',
       }}
       onMouseEnter={e => {
-        e.currentTarget.style.borderColor = group.accent + '55';
-        e.currentTarget.style.transform = 'translateY(-2px)';
+        e.currentTarget.style.borderColor = group.accent + '88';
       }}
       onMouseLeave={e => {
-        e.currentTarget.style.borderColor = 'rgba(255,255,255,0.07)';
-        e.currentTarget.style.transform = 'translateY(0)';
+        e.currentTarget.style.borderColor = group.accent + '33';
       }}
     >
       {/* Ambient glow */}
       <div
-        style={{
-          position: 'absolute',
-          top: -40,
-          right: -40,
-          width: 120,
-          height: 120,
-          borderRadius: '50%',
-          background: group.accent,
-          opacity: 0.06,
-          filter: 'blur(40px)',
-          pointerEvents: 'none',
-        }}
+        className="absolute -top-12 -right-12 w-32 h-32 rounded-full blur-3xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 pointer-events-none"
+        style={{ background: group.accent }}
       />
 
       {/* Header */}
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'flex-start',
-          justifyContent: 'space-between',
-          marginBottom: '20px',
-        }}
-      >
+      <div className="relative z-10 flex items-start justify-between mb-6">
         <div>
           <span
-            style={{
-              fontFamily: "'JetBrains Mono', 'Fira Code', monospace",
-              fontSize: '11px',
-              fontWeight: 600,
-              letterSpacing: '0.12em',
-              color: group.accent,
-              textTransform: 'uppercase',
-              display: 'block',
-              marginBottom: '6px',
-            }}
+            className="text-xs md:text-sm font-bold tracking-widest uppercase block mb-2"
+            style={{ color: group.accent }}
           >
             {group.category}
           </span>
           <div
-            style={{
-              width: '28px',
-              height: '2px',
-              background: group.accent,
-              borderRadius: '2px',
-              opacity: 0.6,
-            }}
+            className="w-12 h-0.5 rounded-full"
+            style={{ background: group.accent }}
           />
         </div>
         <span
-          style={{
-            fontFamily: "'JetBrains Mono', 'Fira Code', monospace",
-            fontSize: '28px',
-            fontWeight: 700,
-            color: 'rgba(255,255,255,0.04)',
-            lineHeight: 1,
-            letterSpacing: '-0.02em',
-            userSelect: 'none',
-          }}
+          className="text-3xl md:text-4xl font-black opacity-5 select-none"
+          style={{ color: group.accent }}
         >
           {group.label}
         </span>
       </div>
 
-      {/* Pills */}
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+      {/* Skills Pills */}
+      <div className="relative z-10 flex flex-wrap gap-2">
         {group.items.map((skill, i) => (
           <div
             key={i}
             onMouseEnter={() => setHovered(i)}
             onMouseLeave={() => setHovered(null)}
+            className="flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-lg border transition-all duration-200 bg-gray-900/50"
             style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '7px',
-              padding: '7px 12px',
-              borderRadius: '8px',
-              background:
-                hovered === i ? group.accentDim : 'rgba(255,255,255,0.04)',
-              border: `1px solid ${hovered === i ? group.accent + '44' : 'rgba(255,255,255,0.06)'}`,
-              transition: 'all 0.2s ease',
-              cursor: 'default',
+              borderColor: hovered === i ? group.accent + '88' : 'rgba(255,255,255,0.1)',
+              backgroundColor: hovered === i ? group.accentDim : 'rgba(255,255,255,0.02)',
             }}
           >
             <span
+              className="text-lg md:text-xl flex-shrink-0 transition-colors duration-200"
               style={{
-                fontSize: '15px',
                 color: hovered === i ? group.accent : 'rgba(255,255,255,0.5)',
-                display: 'flex',
-                alignItems: 'center',
-                transition: 'color 0.2s ease',
               }}
             >
               {skill.icon}
             </span>
             <span
+              className="text-sm md:text-base font-medium transition-colors duration-200"
               style={{
-                fontFamily: "'DM Sans', 'Segoe UI', sans-serif",
-                fontSize: '13px',
-                fontWeight: 500,
-                color: hovered === i ? '#fff' : 'rgba(255,255,255,0.65)',
-                letterSpacing: '0.01em',
-                transition: 'color 0.2s ease',
-                whiteSpace: 'nowrap',
+                color: hovered === i ? '#fff' : 'rgba(255,255,255,0.7)',
               }}
             >
               {skill.name}
@@ -202,38 +142,29 @@ const SkillCard = ({ group }) => {
 
 const Skill = () => {
   return (
-    <div style={{ paddingTop: '64px', paddingBottom: '12px' }}>
-      <div style={{ marginBottom: '36px' }}>
-        <div
-          style={{
-            alignItems: 'center',
-            gap: '12px',
-            marginBottom: '10px',
-          }}
-        >
-          <h1 className="text-4xl font-bold text-white mb-2">
+    <section id="skills" className="py-16 md:py-24">
+      <div className="max-w-6xl mx-auto px-6">
+        {/* Header */}
+        <div className="mb-12 md:mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-3">
             My Skills<span className="text-blue-400">.</span>
-          </h1>
-          <p className="mb-8 text-gray-400">
+          </h2>
+          <div className="w-16 h-1 bg-gradient-to-r from-blue-400 to-cyan-400 mb-6"></div>
+          <p className="text-gray-400 text-base md:text-lg">
             Tools & technologies that power my work.
           </p>
         </div>
-      </div>
 
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
-          gap: '16px',
-        }}
-      >
-        {skills.map((group, i) => (
-          <SkillCard key={i} group={group} />
-        ))}
+        {/* Skills Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-8">
+          {skills.map((group, i) => (
+            <SkillCard key={i} group={group} />
+          ))}
+        </div>
       </div>
 
       <div id="projects" />
-    </div>
+    </section>
   );
 };
 
