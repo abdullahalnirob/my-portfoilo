@@ -10,7 +10,16 @@ import {
 } from 'react-icons/fa';
 import { RiReactjsLine, RiTailwindCssFill, RiNextjsFill } from 'react-icons/ri';
 import { BiLogoPostgresql } from 'react-icons/bi';
-import { SiExpress, SiJsonwebtokens } from 'react-icons/si';
+import {
+  SiExpress,
+  SiJsonwebtokens,
+  SiSupabase,
+  SiN8N,
+  SiGreensock,
+  SiMysql,
+  SiTypescript,
+} from 'react-icons/si';
+import { TbApi, TbDatabaseCog } from 'react-icons/tb';
 
 export const skills = [
   {
@@ -21,6 +30,7 @@ export const skills = [
     items: [
       { name: 'Tailwind CSS', icon: <RiTailwindCssFill /> },
       { name: 'JavaScript', icon: <FaJs /> },
+      { name: 'TypeScript', icon: <SiTypescript /> },
       { name: 'React.js', icon: <RiReactjsLine /> },
       { name: 'Next.js', icon: <RiNextjsFill /> },
     ],
@@ -33,6 +43,7 @@ export const skills = [
     items: [
       { name: 'Node.js', icon: <FaNode /> },
       { name: 'Express.js', icon: <SiExpress /> },
+      { name: 'REST API', icon: <TbApi /> },
       { name: 'JWT', icon: <SiJsonwebtokens /> },
     ],
   },
@@ -45,6 +56,8 @@ export const skills = [
       { name: 'MongoDB', icon: <DiMongodb /> },
       { name: 'Firebase', icon: <FaFireAlt /> },
       { name: 'PostgreSQL', icon: <BiLogoPostgresql /> },
+      { name: 'MySQL', icon: <SiMysql /> },
+      { name: 'Supabase', icon: <SiSupabase /> },
     ],
   },
   {
@@ -56,6 +69,17 @@ export const skills = [
       { name: 'Git', icon: <FaGitAlt /> },
       { name: 'GitHub', icon: <FaGithub /> },
       { name: 'Docker', icon: <FaDocker /> },
+    ],
+  },
+  {
+    category: 'Tools & Technology',
+    accent: '#EC4899',
+    accentDim: 'rgba(236,72,153,0.12)',
+    label: '05',
+    items: [
+      { name: 'n8n Automation', icon: <SiN8N /> },
+      { name: 'GSAP Animation', icon: <SiGreensock /> },
+      { name: 'Database Design', icon: <TbDatabaseCog /> },
     ],
   },
 ];

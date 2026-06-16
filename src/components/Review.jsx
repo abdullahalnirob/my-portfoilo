@@ -39,7 +39,7 @@ const reviews = [
     img: 'https://scontent.fjsr11-1.fna.fbcdn.net/v/t1.6435-9/52655920_684116721991176_7787362760957886464_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeHGNj3tVd9YcYAVpwYAqMrkNhtzg48DDyQ2G3ODjwMPJK6w-2cmDKQAxdIvbuvMuwhnLnkT3Ve_YY2aBKVHXlNu&_nc_ohc=Soo1TtljssYQ7kNvwH9GPtY&_nc_oc=Adl4y-XzGgmCPyz-txIOQJIiQTKmAjmvDsxBWBz5lhaHmyFn86mqAFAHUqkbnJxkUTE&_nc_zt=23&_nc_ht=scontent.fjsr11-1.fna&_nc_gid=NVrY-LAE_y_FD2hyWpFYfA&oh=00_AfiPbzWkfsT9c61B13gP5q40n3YdzEk5yz_PbzzBIk1OUw&oe=69514419',
     name: 'RK Zahid Hassan Dipu',
     content:
-      'Abdullah Al Nirob is a highly skilled Full-Stack MERN developer. He delivers clean, efficient, and well-structured code, with strong expertise in both frontend and backend development. Abdullah is proactive, detail-oriented, and a reliable team player.',
+      'Abdullah Al Nirob is a highly skilled full-stack software developer. He delivers clean, efficient, and well-structured code, with strong expertise in both frontend and backend development. Abdullah is proactive, detail-oriented, and a reliable team player.',
     rating: 5,
   },
   {

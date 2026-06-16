@@ -22,7 +22,7 @@ const Hero = () => {
               <span className="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">Nirob</span>
               <span className="text-blue-400">.</span>
             </h1>
-            <p className="text-base md:text-lg text-gray-400 font-medium">Frontend Developer</p>
+            <p className="text-base md:text-lg text-gray-400 font-medium">Software Developer</p>
           </div>
 
           <div className="my-6 flex flex-col sm:flex-row items-start sm:items-center sm:space-x-6 space-y-2 sm:space-y-0">
@@ -39,9 +39,9 @@ const Hero = () => {
           </div>
 
           <p className="text-gray-300 text-sm md:text-base leading-relaxed max-w-xl mb-8">
-            A goal-oriented web developer with experience in building web
-            applications using modern technologies like React, Node.js, Express,
-            and MongoDB. Seeking to leverage my technical skills to deliver
+            A goal-oriented software developer who designs and builds reliable
+            web applications from front to back. I turn ideas into clean,
+            scalable products and love solving real problems to deliver
             exceptional user experiences.
           </p>
 
@@ -84,7 +84,7 @@ const Hero = () => {
             <div className="relative mb-6 inline-block">
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full blur-xl opacity-15"></div>
               <img
-                src="profile.webp"
+                src="/new_profile.webp"
                 alt="Profile"
                 className="relative object-cover w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 rounded-full mx-auto ring-2 ring-blue-400/30 shadow-xl"
               />

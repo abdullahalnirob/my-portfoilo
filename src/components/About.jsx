@@ -17,21 +17,21 @@ const About = () => {
           {/* Left Text */}
           <div className="space-y-6">
             <p className="text-gray-300 text-base md:text-lg leading-relaxed">
-              Hi! I'm <span className="text-blue-400 font-semibold">Abdullah</span>. 
-              I'm a <span className="font-semibold text-white">MERN stack developer</span> who 
-              enjoys making websites and web apps that are fast, easy to use, and work well.
+              Hi! I'm <span className="text-blue-400 font-semibold">Abdullah</span>.
+              I'm a <span className="font-semibold text-white">software developer</span> who
+              enjoys building websites and web apps that are fast, easy to use, and work well.
             </p>
 
             <p className="text-gray-300 text-base md:text-lg leading-relaxed">
-              I use <span className="text-cyan-400 font-medium">MongoDB, Express.js, React, and Node.js</span> to 
-              build both the front and back parts of websites. I know how to create strong APIs, 
-              design nice-looking pages, and make sure everything works smoothly.
+              I build both the front and back parts of web applications. I know how to design
+              clean, intuitive interfaces, create strong and secure APIs, and structure databases
+              so everything runs smoothly and scales with ease.
             </p>
 
             <p className="text-gray-300 text-base md:text-lg leading-relaxed">
-              I can also add other tools to the website, set up login systems, 
-              put apps online, and make sure they run fast. I enjoy working on the full 
-              website from start to finish.
+              I also set up authentication, automate workflows, deploy apps online, and tune them
+              for performance. I enjoy owning the full product from start to finish and turning
+              ideas into reliable software.
             </p>
 
             <div className="pt-4">

@@ -53,7 +53,7 @@ const Footer = () => {
               Abdullah<span className="text-blue-400">.</span>
             </h2>
             <p className="text-gray-400 text-sm md:text-base leading-relaxed max-w-xs">
-              Full-stack developer crafting beautiful, functional web experiences with modern technologies.
+              Software developer crafting beautiful, functional, and reliable web experiences from front to back.
             </p>
           </div>
 
