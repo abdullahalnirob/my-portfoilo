@@ -10,6 +10,7 @@ import {
   FaFacebookF,
   FaEnvelope,
 } from "react-icons/fa6";
+import SkewButton from "./SkewButton";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -114,24 +115,20 @@ const About = () => {
               data-reveal
               className="flex flex-col xs:flex-row sm:flex-row items-center justify-center md:justify-start gap-3 sm:gap-4 my-5 w-full"
             >
-              <button className="group relative bg-[#D84315] text-white px-6 md:px-8 py-2.5 rounded-full w-full sm:w-auto">
-                <a
-                  href="#projects"
-                  className="relative inline-flex overflow-hidden justify-center w-full"
-                >
-                  <div className="translate-y-0 skew-y-0 transition duration-500 group-hover:-translate-y-[110%] group-hover:skew-y-12">
-                    View my work
-                  </div>
-                  <div className="absolute translate-y-[114%] skew-y-12 transition duration-500 group-hover:translate-y-0 group-hover:skew-y-0">
-                    View my work
-                  </div>
-                </a>
-              </button>
+              <SkewButton href="#projects" className="w-full sm:w-auto">
+                View my work
+              </SkewButton>
 
-              <a href="#contact" className="w-full sm:w-auto">
-                <button className="                  bg-transparent hover:bg-white text-black ring-1 ring-black px-6 py-2.5 rounded-full w-full sm:w-auto">
-                  Let&apos;s talk
-                </button>
+              <a
+                href="#contact"
+                onClick={(e) => {
+                  e.preventDefault();
+                  const el = document.querySelector("#contact");
+                  if (el) el.scrollIntoView({ behavior: "smooth" });
+                }}
+                className="bg-transparent hover:bg-white text-black ring-1 ring-black px-6 py-2.5 rounded-full w-full sm:w-auto text-center"
+              >
+                Let&apos;s talk
               </a>
             </div>
 

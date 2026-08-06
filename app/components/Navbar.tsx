@@ -6,6 +6,7 @@ import { createPortal } from 'react-dom'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ScrollSmoother } from 'gsap/ScrollSmoother'
+import { scrollToSection } from '@/app/utils/scrollTo'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -57,7 +58,10 @@ const NavLink = ({ href, children, onClick }: NavLinkProps) => {
                 ref={linkRef}
                 href={href}
                 className="block"
-                onClick={onClick}
+                onClick={(e) => {
+                    scrollToSection(e, href)
+                    onClick?.()
+                }}
                 onMouseEnter={() => animate(true)}
                 onMouseLeave={() => animate(false)}
             >

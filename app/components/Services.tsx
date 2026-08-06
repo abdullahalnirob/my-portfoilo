@@ -10,6 +10,8 @@ import {
   useTransform,
 } from "motion/react";
 import { LuArrowRight } from "react-icons/lu";
+import SkewButton from "./SkewButton";
+import { scrollToSection } from "@/app/utils/scrollTo";
 
 import commerceImg from "../images/Image by Campaign Creators.avif";
 import engineeringImg from "../images/Website setup on laptop.avif";
@@ -309,6 +311,7 @@ const ServiceCard = ({
         <motion.a
           variants={copyVariants}
           href={service.href}
+          onClick={(e) => scrollToSection(e, service.href)}
           className="
             group/cta
             mt-9
@@ -468,58 +471,17 @@ const Services = () => {
           </p>
 
           <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
-            <a
-              href="#contact"
-              className="
-                group
-                relative
-                inline-flex
-                w-full
-                items-center
-                justify-center
-                overflow-hidden
-                rounded-full
-                bg-black
-                px-8
-                py-3
-                text-sm
-                text-white
-                sm:w-auto
-                sm:text-base
-              "
-            >
-              <span className="relative inline-flex overflow-hidden">
-                <span
-                  className="
-                    translate-y-0
-                    skew-y-0
-                    transition
-                    duration-500
-                    group-hover:-translate-y-[110%]
-                    group-hover:skew-y-12
-                  "
-                >
-                  Start a project
-                </span>
-
-                <span
-                  className="
-                    absolute
-                    translate-y-[114%]
-                    skew-y-12
-                    transition
-                    duration-500
-                    group-hover:translate-y-0
-                    group-hover:skew-y-0
-                  "
-                >
-                  Start a project
-                </span>
-              </span>
-            </a>
+            <SkewButton href="#contact" variant="secondary" className="w-full sm:w-auto">
+              Start a project
+            </SkewButton>
 
             <a
               href="#projects"
+              onClick={(e) => {
+                e.preventDefault();
+                const el = document.querySelector("#projects");
+                if (el) el.scrollIntoView({ behavior: "smooth" });
+              }}
               className="
                 inline-flex
                 w-full

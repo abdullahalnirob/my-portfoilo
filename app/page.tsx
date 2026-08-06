@@ -5,6 +5,7 @@ import BanglaKrisi from "./components/BanglaKrisi";
 import Services from "./components/Services";
 import Projects from "./components/Projects";
 import Testimonials from "./components/Testimonials";
+import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 // import Services2 from "./components/Services2";
 // import SlidingEaseVerticalBars from "./components/SlidingEaseVerticalBars";
@@ -19,6 +20,7 @@ export default function Home() {
       <Services />
       <Projects />
       <Testimonials />
+      <Contact />
       <Footer />
       {/* <SlidingEaseVerticalBars
         backgroundColor="#F4F4F2"

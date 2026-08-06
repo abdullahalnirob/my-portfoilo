@@ -1,5 +1,8 @@
+"use client";
+
 import React from "react";
 import { FaLinkedin } from "react-icons/fa";
+import SkewButton from "./SkewButton";
 
 const Hero = () => {
   return (
@@ -25,28 +28,16 @@ const Hero = () => {
           </p>
 
           <div className="flex flex-col xs:flex-row sm:flex-row items-center justify-center md:justify-start gap-3 sm:gap-4 my-5 w-full">
-            <button className="group relative bg-[#D84315] text-white px-6 md:px-8 py-2.5 rounded-full w-full sm:w-auto">
-              <a
-                href="#contact"
-                className="relative inline-flex overflow-hidden justify-center w-full"
-              >
-                <div className="translate-y-0 skew-y-0 transition duration-500 group-hover:-translate-y-[110%] group-hover:skew-y-12">
-                  Contact me
-                </div>
-                <div className="absolute translate-y-[114%] skew-y-12 transition duration-500 group-hover:translate-y-0 group-hover:skew-y-0">
-                  Contact me
-                </div>
-              </a>
-            </button>
+            <SkewButton href="#contact" className="w-full sm:w-auto">
+              Contact me
+            </SkewButton>
 
             <a
-              href="Abdullah-Al-Nirob.pdf"
-              download="Abdullah-Al-Nirob.pdf"
-              className="w-full sm:w-auto"
+              href="Abdullah's-Resume.pdf"
+              download="Abdullah's-Resume.pdf"
+              className="bg-transparent hover:bg-slate-200 text-black ring-1 ring-black px-6 py-2.5 rounded-full w-full sm:w-auto text-center"
             >
-              <button className="bg-transparent hover:bg-slate-200 text-black ring-1 ring-black px-6 py-2.5 rounded-full w-full sm:w-auto">
-                Download Resume
-              </button>
+              Download Resume
             </a>
           </div>
 

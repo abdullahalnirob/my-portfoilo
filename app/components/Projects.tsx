@@ -5,6 +5,7 @@ import Image from "next/image";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import gsap from "gsap";
 import { LuArrowUpRight, LuGithub } from "react-icons/lu";
+import SkewButton from "./SkewButton";
 
 type CategoryId = "raw" | "frontend" | "fullstack" | "client" | "video";
 
@@ -335,28 +336,24 @@ const Projects = () => {
           </p>
 
           <div className="flex w-full flex-col gap-3 sm:flex-row md:w-auto">
-            <a
+            <SkewButton
               href="https://github.com/abdullahalnirob"
-              target="_blank"
-              rel="noreferrer noopener"
+              variant="secondary"
+              className="w-full sm:w-auto"
+              icon={<LuGithub className="shrink-0" />}
+            >
+              Browse the code
+            </SkewButton>
+
+            <a
+              href="#contact"
+              onClick={(e) => {
+                e.preventDefault();
+                const el = document.querySelector("#contact");
+                if (el) el.scrollIntoView({ behavior: "smooth" });
+              }}
               className="w-full sm:w-auto"
             >
-              <button className="group relative w-full rounded-full bg-black px-8 py-3 text-[#F4F4F2] sm:w-auto">
-                <span className="relative inline-flex w-full items-center justify-center gap-2 overflow-hidden">
-                  <LuGithub className="shrink-0" />
-                  <span className="relative inline-flex overflow-hidden">
-                    <span className="translate-y-0 skew-y-0 transition duration-500 group-hover:-translate-y-[110%] group-hover:skew-y-12">
-                      Browse the code
-                    </span>
-                    <span className="absolute translate-y-[114%] skew-y-12 transition duration-500 group-hover:translate-y-0 group-hover:skew-y-0">
-                      Browse the code
-                    </span>
-                  </span>
-                </span>
-              </button>
-            </a>
-
-            <a href="#contact" className="w-full sm:w-auto">
               <button className="w-full rounded-full bg-transparent px-8 py-3 text-[#2B2B2B] ring-1 ring-[#2B2B2B]/35 transition duration-300 hover:bg-[#F4F4F2] hover:ring-[#2B2B2B] sm:w-auto">
                 Start a project
               </button>

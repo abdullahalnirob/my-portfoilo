@@ -24,6 +24,12 @@ button{
   cursor: pointer;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
 /* humberger menu styles */
 /* From Uiverse.io by Cevorob */ 
 .burger {
