@@ -1,0 +1,84 @@
+@font-face {
+  font-family: 'ClashDisplay';
+  src: url('./ClashDisplay_Complete/Fonts/WEB/fonts/ClashDisplay-Variable.woff2') format('woff2'),
+       url('./ClashDisplay_Complete/Fonts/WEB/fonts/ClashDisplay-Variable.woff') format('woff'),
+       url('./ClashDisplay_Complete/Fonts/WEB/fonts/ClashDisplay-Variable.ttf') format('truetype');
+  font-weight: 200 700;
+  font-display: swap;
+  font-style: normal;
+}
+
+.font-clash-extralight {
+  font-family: 'ClashDisplay';
+  font-weight: 200;
+}
+
+.font-clash-light {
+  font-family: 'ClashDisplay';
+  font-weight: 300;
+}
+
+.font-clash-regular {
+  font-family: 'ClashDisplay';
+  font-weight: 400;
+}
+
+.font-clash-medium {
+  font-family: 'ClashDisplay';
+  font-weight: 500;
+}
+
+.font-clash-semibold {
+  font-family: 'ClashDisplay';
+  font-weight: 600;
+}
+
+.font-clash-bold {
+  font-family: 'ClashDisplay';
+  font-weight: 700;
+}
+
+.font-bricolage {
+  font-family: var(--font-bricolage);
+}
+
+.font-bricolage-thin {
+  font-family: var(--font-bricolage);
+  font-weight: 200;
+}
+
+.font-bricolage-light {
+  font-family: var(--font-bricolage);
+  font-weight: 300;
+}
+
+.font-bricolage-regular {
+  font-family: var(--font-bricolage);
+  font-weight: 400;
+}
+
+.font-bricolage-medium {
+  font-family: var(--font-bricolage);
+  font-weight: 500;
+}
+
+.font-bricolage-semibold {
+  font-family: var(--font-bricolage);
+  font-weight: 600;
+}
+
+.font-bricolage-bold {
+  font-family: var(--font-bricolage);
+  font-weight: 700;
+}
+
+.font-bricolage-extrabold {
+  font-family: var(--font-bricolage);
+  font-weight: 800;
+}
+
+.font-geist-mono {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-weight: 400;
+  font-feature-settings: "tnum";
+}

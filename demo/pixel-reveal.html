@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pixel Reveal — scroll-driven mosaic hero</title>
+
+    <!--
+      Standalone, framework-free version of app/components/PixelReveal.tsx.
+      Open it straight from disk (file://) — GSAP loads from the CDN.
+      Same tuning knobs, same animation logic; useful for tweaking the feel
+      without a dev server in the loop.
+    -->
+
+    <style>
+      :root {
+        /* The colour of the squares. Match your page background. */
+        --pixel-color: #ffffff;
+        --page-bg: #ffffff;
+        --ink: #101010;
+      }
+
+      * { box-sizing: border-box; }
+
+      html, body {
+        margin: 0;
+        background: var(--page-bg);
+        color: var(--ink);
+        font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+      }
+
+      /* ── Hero ──────────────────────────────────────────────────────────
+         svh, not vh: on mobile the URL bar collapsing must not resize the
+         stage mid-scroll, which would otherwise rebuild the whole grid. */
+      .hero {
+        position: relative;
+        height: 100svh;
+        width: 100%;
+        overflow: hidden;
+        background: #000;
+      }
+
+      .hero__stage { position: absolute; inset: 0; overflow: hidden; }
+
+      /* Layer 1 — background media */
+      .hero__media { position: absolute; inset: 0; z-index: 0; }
+      .hero__media img,
+      .hero__media video {
+        width: 100%; height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      /* Layer 2 — copy. Sits *under* the tiles so the mosaic buries it. */
+      .hero__copy {
+        position: absolute; inset: 0; z-index: 1;
+        display: flex; flex-direction: column;
+        align-items: center; justify-content: center;
+        gap: 0.75rem; padding: 1.5rem;
+        text-align: center; color: #fff;
+        text-shadow: 0 2px 24px rgb(0 0 0 / 45%);
+      }
+      .hero__title {
+        margin: 0;
+        font-size: clamp(2.5rem, 9vw, 7rem);
+        font-weight: 700; line-height: 0.95; letter-spacing: -0.02em;
+      }
+      .hero__subtitle {
+        margin: 0;
+        font-size: clamp(0.75rem, 1.6vw, 1rem);
+        letter-spacing: 0.35em; text-transform: uppercase; opacity: 0.85;
+      }
+
+      /* Layer 3 — the mosaic */
+      .hero__grid {
+        position: absolute; inset: 0; z-index: 2;
+        display: grid;
+        /* grid-template-columns / grid-auto-rows are written from JS so the
+           tile size can be recomputed on resize. align-content:start keeps the
+           last (partial) row overflowing off the bottom instead of stretching. */
+        align-content: start;
+        pointer-events: none;
+        /* Scope layout + paint work to this subtree: a tile scaling never asks
+           the rest of the page to reflow or repaint. */
+        contain: layout paint;
+      }
+
+      .tile {
+        width: 100%; height: 100%;
+        background: var(--pixel-color);
+        /* Start collapsed. GSAP takes over — no CSS transitions, they would
+           fight the scrub. */
+        transform: scale(0);
+        /* Deliberately NO `will-change: transform`. With ~900 tiles that asks
+           the compositor for ~900 layers and blows out GPU memory on mobile. */
+      }
+
+      /* Reduced-motion fallback surface */
+      .hero__veil {
+        position: absolute; inset: 0; z-index: 2;
+        background: var(--pixel-color);
+        opacity: 0; pointer-events: none;
+      }
+
+      /* ── Page content below the hero ─────────────────────────────────── */
+      .content { max-width: 60rem; margin: 0 auto; padding: 6rem 1.5rem 12rem; }
+      .content h2 { font-size: clamp(1.75rem, 4vw, 3rem); letter-spacing: -0.02em; }
+      .content p { line-height: 1.7; max-width: 42rem; color: #333; }
+    </style>
+  </head>
+
+  <body>
+    <section class="hero" id="hero">
+      <div class="hero__stage">
+        <!-- Layer 1: swap for <video autoplay muted loop playsinline src="..."></video> -->
+        <div class="hero__media">
+          <img src="../public/hero_img.webp" alt="" />
+        </div>
+
+        <!-- Layer 2 -->
+        <div class="hero__copy" id="heroCopy">
+          <p class="hero__subtitle">Web Developer</p>
+          <h1 class="hero__title">ABDULLAH AL NIROB</h1>
+        </div>
+
+        <!-- Layer 3: tiles are injected here by JS -->
+        <div class="hero__grid" id="heroGrid" aria-hidden="true"></div>
+
+        <div class="hero__veil" id="heroVeil" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <main class="content">
+      <h2>Scroll past the hero</h2>
+      <p>
+        The mosaic is scrubbed, not played — every tile's scale is a pure
+        function of scroll position, so scrolling back up uncovers the image in
+        exactly the reverse order it was covered.
+      </p>
+      <p style="height: 120vh"></p>
+      <h2>Still scrolling</h2>
+      <p>Filler so the page has somewhere to go.</p>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
+    <script>
+      gsap.registerPlugin(ScrollTrigger);
+
+      /* ── CONFIG ──────────────────────────────────────────────────────────
+         Every knob you'd normally want to touch lives here. */
+
+      /** Target edge length of one tile, in CSS px. The real size is snapped so
+       *  a whole number of columns fits the viewport width (tiles stay square).
+       *  Smaller = finer mosaic = more DOM nodes. */
+      const TILE_SIZE = 56;
+      const TILE_SIZE_MOBILE = 40;
+
+      /** Hard ceiling on tile count. If the computed grid exceeds it, the tile
+       *  size is coarsened until it fits — this is what stops a 4K monitor from
+       *  producing 8000 animated nodes. ~1400 scrubs comfortably at 60fps. */
+      const MAX_TILES = 1400;
+
+      /* The scrubbed timeline is normalised to a total length of 1.0. A tile's
+         own growth takes TILE_DURATION of that; its start offset comes from the
+         wave + jitter budget. Keep TILE_DURATION + WAVE + JITTER === 1 so the
+         last tile finishes exactly as the scroll range ends. */
+
+      /** How long one tile takes to scale from 0 → covered. Larger = softer,
+       *  more overlapping mosaic. Smaller = crisper, more "pixel snaps in". */
+      const TILE_DURATION = 0.3;
+
+      /** Share of the delay that comes from the tile's *position* — this is
+       *  what reads as a wave sweeping the screen rather than TV static. */
+      const WAVE = 0.45;
+
+      /** Share of the delay that is random per tile — this breaks the wave into
+       *  a mosaic. WAVE ≫ JITTER = orderly sweep; JITTER ≫ WAVE = pure noise. */
+      const JITTER = 0.25;
+
+      /** Direction of the wave, as weights over normalised grid coordinates.
+       *  These sweep from the bottom edge upward with a lean to the left.
+       *  Try { x: 0.5, y: 0.5, fromBottom: false } for a top-left diagonal. */
+      const WAVE_ORIGIN = { x: 0.3, y: 0.7, fromBottom: true, fromRight: false };
+
+      /** Easing of one tile's growth. "power2.out" pops then settles;
+       *  "back.out(1.7)" overshoots; "none" is a flat linear fill. */
+      const TILE_EASE = "power2.out";
+
+      /** Final scale — slightly over 1 so neighbours overlap by a couple of
+       *  percent and sub-pixel seams never show as hairlines. */
+      const TILE_OVERLAP = 1.04;
+
+      /** Scrub smoothing in seconds. `true` locks 1:1 to the scrollbar. */
+      const SCRUB = 0.6;
+
+      /** Scroll distance the transition consumes, as a multiple of viewport
+       *  height. 1 = fully covered after one screen of scrolling. */
+      const SCROLL_LENGTH = 1;
+
+      /* ──────────────────────────────────────────────────────────────────── */
+
+      const hero = document.getElementById("hero");
+      const grid = document.getElementById("heroGrid");
+      const copy = document.getElementById("heroCopy");
+      const veil = document.getElementById("heroVeil");
+
+      const mm = gsap.matchMedia();
+
+      /* ── Full experience ─────────────────────────────────────────────── */
+      mm.add("(prefers-reduced-motion: no-preference)", () => {
+        let tiles = [];
+        let delays = [];
+
+        /** Pick a square tile size that divides the width evenly and keeps the
+         *  tile count under MAX_TILES. */
+        function measure(w, h) {
+          let target = w <= 640 ? TILE_SIZE_MOBILE : TILE_SIZE;
+
+          // Bounded coarsening loop — never a while(true).
+          for (let pass = 0; pass < 8; pass++) {
+            const cols = Math.max(1, Math.round(w / target));
+            const size = w / cols; // exact horizontal fit → no seam at the edges
+            const rows = Math.ceil(h / size); // last row may overflow; clipped
+            if (cols * rows <= MAX_TILES || pass === 7) return { cols, rows, size };
+            target *= 1.25;
+          }
+          return { cols: 1, rows: 1, size: w };
+        }
+
+        /** (Re)build the DOM grid and the matching per-tile delay table. */
+        function build() {
+          const { cols, rows, size } = measure(hero.clientWidth, hero.clientHeight);
+
+          grid.style.gridTemplateColumns = `repeat(${cols}, ${size}px)`;
+          grid.style.gridAutoRows = `${size}px`;
+
+          const frag = document.createDocumentFragment();
+          tiles = [];
+          delays = [];
+
+          for (let i = 0; i < cols * rows; i++) {
+            const col = i % cols;
+            const row = (i / cols) | 0;
+
+            // Normalised 0→1 position within the grid.
+            let nx = cols > 1 ? col / (cols - 1) : 0;
+            let ny = rows > 1 ? row / (rows - 1) : 0;
+            if (WAVE_ORIGIN.fromRight) nx = 1 - nx;
+            if (WAVE_ORIGIN.fromBottom) ny = 1 - ny;
+
+            // Weighted distance from the wave origin: 0 = first in, 1 = last.
+            const wave =
+              (nx * WAVE_ORIGIN.x + ny * WAVE_ORIGIN.y) /
+              (WAVE_ORIGIN.x + WAVE_ORIGIN.y);
+
+            delays.push(wave * WAVE + Math.random() * JITTER);
+
+            const tile = document.createElement("div");
+            tile.className = "tile";
+            frag.appendChild(tile);
+            tiles.push(tile);
+          }
+
+          grid.replaceChildren(frag);
+        }
+
+        /** The one tween that does all the work — in a factory so the resize
+         *  path can rebuild it against new nodes without duplicating config. */
+        const makeTilesTween = () =>
+          gsap.fromTo(
+            tiles,
+            { scale: 0 },
+            {
+              scale: TILE_OVERLAP,
+              duration: TILE_DURATION,
+              ease: TILE_EASE,
+              // force3D:false keeps tiles on 2D transforms. GSAP's default
+              // ("auto") promotes every tweening element to its own GPU layer —
+              // fine for 10 elements, catastrophic for 900.
+              force3D: false,
+              // A function stagger returns this target's start offset directly,
+              // letting the wave + jitter table drive the whole mosaic.
+              stagger: (index) => delays[index],
+            }
+          );
+
+        build();
+
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: hero,
+            start: "top top",
+            // Function form so the distance is re-read on every refresh.
+            end: () => "+=" + window.innerHeight * SCROLL_LENGTH,
+            scrub: SCRUB,
+            pin: true,
+            pinSpacing: true,
+            anticipatePin: 1,
+            invalidateOnRefresh: true,
+          },
+        });
+
+        let tilesTween = makeTilesTween();
+        tl.add(tilesTween, 0);
+
+        // Copy sits under the tiles; fade it so it dissolves rather than
+        // getting chopped up by the advancing mosaic.
+        tl.to(copy, { autoAlpha: 0, y: -40, duration: 0.4, ease: "power1.out" }, 0);
+
+        /* Rebuild only on a width change, or a large height change. Mobile
+           browsers fire resize continuously as the URL bar slides; those are
+           height-only deltas and must not tear down 900 nodes mid-scroll. */
+        let lastW = hero.clientWidth;
+        let lastH = hero.clientHeight;
+        let raf = 0;
+
+        const onResize = () => {
+          const w = hero.clientWidth;
+          const h = hero.clientHeight;
+          if (w === lastW && Math.abs(h - lastH) < 120) return;
+          lastW = w;
+          lastH = h;
+
+          cancelAnimationFrame(raf);
+          raf = requestAnimationFrame(() => {
+            tilesTween.kill();
+            build();
+            tilesTween = makeTilesTween();
+            tl.add(tilesTween, 0);
+            ScrollTrigger.refresh();
+          });
+        };
+
+        window.addEventListener("resize", onResize);
+
+        return () => {
+          cancelAnimationFrame(raf);
+          window.removeEventListener("resize", onResize);
+          grid.replaceChildren();
+        };
+      });
+
+      /* ── Reduced motion: one honest cross-fade, no mosaic ─────────────── */
+      mm.add("(prefers-reduced-motion: reduce)", () => {
+        gsap.to(veil, {
+          opacity: 1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: hero,
+            start: "top top",
+            end: () => "+=" + window.innerHeight * SCROLL_LENGTH,
+            scrub: true,
+            pin: true,
+            invalidateOnRefresh: true,
+          },
+        });
+      });
+    </script>
+  </body>
+</html>
