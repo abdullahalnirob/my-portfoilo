@@ -6,7 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
   FaGithub,
   FaLinkedinIn,
-  FaXTwitter,
+  FaInstagram,
   FaFacebookF,
   FaEnvelope,
 } from "react-icons/fa6";
@@ -18,13 +18,17 @@ const socials = [
   { name: "GitHub", href: "https://github.com/abdullahalnirob", Icon: FaGithub },
   {
     name: "LinkedIn",
-    href: "https://www.linkedin.com/in/abdullahalnirob",
+    href: "https://www.linkedin.com/in/abdullah-al-nirob-io/",
     Icon: FaLinkedinIn,
   },
-  { name: "X", href: "https://x.com/abdullahalnirob", Icon: FaXTwitter },
+  {
+    name: "Instagram",
+    href: "https://instagram.com/abdullah__nirob",
+    Icon: FaInstagram,
+  },
   {
     name: "Facebook",
-    href: "https://facebook.com/abdullahalnirob",
+    href: "https://facebook.com/dev.abdullahalnirob",
     Icon: FaFacebookF,
   },
   { name: "Email", href: "mailto:hello@abdullahalnirob.com", Icon: FaEnvelope },
