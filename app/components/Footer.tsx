@@ -26,10 +26,10 @@ const Footer = () => {
               together.
             </h2>
             <a
-              href="mailto:abdullahalnirob12@gmail.com"
+              href="mailto:hello.abdullahnirob@gmail.com"
               className="font-bricolage-light mt-4 inline-block text-sm leading-relaxed text-white/60 transition-colors duration-300 hover:text-[#D84315]"
             >
-              abdullahalnirob12@gmail.com
+              hello.abdullahnirob@gmail.com
             </a>
           </div>
 
