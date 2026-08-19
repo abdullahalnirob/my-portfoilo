@@ -100,7 +100,7 @@ const Contact = () => {
                 const subject = (form.elements.namedItem("subject") as HTMLInputElement).value;
                 const message = (form.elements.namedItem("message") as HTMLTextAreaElement).value;
                 const body = `Name: ${name}%0AEmail: ${email}%0A%0A${message}`;
-                window.open(`mailto:abdullahalnirob12@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`, "_blank");
+                window.open(`mailto:hello.abdullahnirob@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`, "_blank");
               }}
               className="mt-8 grid gap-4"
             >
@@ -132,7 +132,7 @@ const Contact = () => {
                 rows={4}
                 className="resize-none rounded-2xl border border-black/15 bg-white px-5 py-3 text-sm text-[#2B2B2B] outline-none transition placeholder:text-[#2B2B2B]/40 focus:border-[#D84315]"
               />
-              <SkewButton href="mailto:abdullahalnirob12@gmail.com" className="mt-2 w-full sm:w-auto">
+              <SkewButton href="mailto:hello.abdullahnirob@gmail.com" className="mt-2 w-full sm:w-auto">
                 Send Message
               </SkewButton>
             </form>
@@ -151,10 +151,10 @@ const Contact = () => {
                 <div>
                   <p className="text-[10px] tracking-[0.3em] text-[#2B2B2B]/40 md:text-xs">EMAIL</p>
                   <a
-                    href="mailto:abdullahalnirob12@gmail.com"
+                    href="mailto:hello.abdullahnirob@gmail.com"
                     className="mt-1 block text-sm text-[#2B2B2B] transition hover:text-[#D84315] md:text-base"
                   >
-                    abdullahalnirob12@gmail.com
+                    hello.abdullahnirob@gmail.com
                   </a>
                 </div>
                 <div>
